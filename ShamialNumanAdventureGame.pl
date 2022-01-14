@@ -10,6 +10,7 @@ path(town, north, mountain).
 
 path(town, south, knight).
 path(knight, north, town).
+path(knight, south, haunted_village).
 
 path(town, east, inn).
 path(town, west, shop).
@@ -26,15 +27,17 @@ path(dragon, west, mountain_cave).
 path(dragon, north, gold_room).
 path(gold_room, south, dragon).
 
-path(haunted_village, south, knight).
+path(haunted_village, north, knight).
 path(haunted_village, east, fishing_port).
 path(fishing_port, west, haunted_village).
 
 
 at(diamonds, gold_room).
+at(gold, haunted_village).
 at(bow, inn).
 
 alive(dragon).
+alive(knight).
 
 take(X) :-
         at(X, in_hand),
@@ -229,8 +232,8 @@ describe(dragon) :-
         write('Yecch!  My boots are covered in this dead dragon''s blood.').
                
 describe(gold_room) :-
-        write('you look up from your map and see you are surronded by a mountain'), n1,
-		write('of gold and diamonds, maybe you could take some!').
+        write('you look up from your map and see you are surronded by a mountain'), nl,
+        write(' of gold and diamonds, maybe you could take some!'), nl. 
 
 describe(fishing_port) :-
         write('the local fishing port').
